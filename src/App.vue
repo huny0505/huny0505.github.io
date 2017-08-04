@@ -1,21 +1,35 @@
 <template>
     <div>
+        <!--加载动画-->
+        <div class="loading" v-show='Show'>
+            <img src="../statics/imgs/loading.gif" alt="">
+        </div>
         <!--右边栏-->
         <div class="aside">
             <div class="user">
                 <img src="../statics/imgs/default.png" alt="">
             </div>
             <ul class="classify">
-                <li><router-link to='/home'><span class="glyphicon glyphicon-dashboard"></span>仪表盘</router-link></li>
-                <li><router-link to='/teacher/teacherlist'><span class="glyphicon glyphicon-education"></span>讲师管理</router-link></li>
-                <li><router-link to='/category/categorylist'><span class="glyphicon glyphicon-list-alt"></span>分类管理</router-link></li>
+                <li>
+                    <router-link to='/home'><span class="glyphicon glyphicon-dashboard"></span>仪表盘</router-link>
+                </li>
+                <li>
+                    <router-link to='/teacher/teacherlist'><span class="glyphicon glyphicon-education"></span>讲师管理</router-link>
+                </li>
+                <li>
+                    <router-link to='/category/categorylist'><span class="glyphicon glyphicon-list-alt"></span>分类管理</router-link>
+                </li>
                 <li @click='isShow'>
                     <a href="javascript:;"><span class="glyphicon glyphicon-th"></span>课程管理<i>></i></a>
                 </li>
             </ul>
             <ul class="class_add classify">
-                <li><router-link to='/course/coursecreate'>课程添加</router-link></li>
-                <li><router-link to='/course/courselist'>课程列表 </router-link></li>
+                <li>
+                    <router-link to='/course/coursecreate'>课程添加</router-link>
+                </li>
+                <li>
+                    <router-link to='/course/courselist'>课程列表 </router-link>
+                </li>
             </ul>
         </div>
         <!--导航条-->
@@ -44,18 +58,27 @@
 </template>
 <script>
     export default {
+        watch: {
+            '$route': function (newroute, oldroute) {
+                this.Show =true;
+                var that = this;
+                setTimeout(function() {
+                    that.Show = false;
+                }, 1000);
+            }
+        },
         data() {
             return {
-
+                Show: false,
             }
         },
         //渲染结束
         mounted() {
             this.addStyle()
+
         },
         methods: {
             addStyle() {
-                console.log(2);
                 $('.classify a').click(function () {
                     $('.classify a').removeClass('active')
                     $(this).addClass('active');
@@ -70,6 +93,25 @@
     }
 </script>
 <style scoped>
+    /*加载动画*/
+
+    .loading {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 999;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .loading img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100px;
+        margin: -80px 0 0 -50px;
+    }
     /*侧边栏*/
 
     .aside {
@@ -150,9 +192,11 @@
     .navbar-default .navbar-nav>li>a {
         color: #337ab7;
     }
+
     .navbar-default {
         background: #fff;
     }
+
     .navbar {
         border-radius: 0;
     }

@@ -96,4 +96,7 @@
     .save {
         margin-left: 270px;
     }
+    select.input-sm {
+        width: 80px;
+    }
 </style>

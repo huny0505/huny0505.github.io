@@ -8,7 +8,9 @@ import categorylist from './compoents/category/categorylist.vue';
 import teacherlist from './compoents/teacher/teacherlist.vue'
 import coursecreate from './compoents/course/coursecreate.vue';
 import courselist from './compoents/course/courselist.vue';
-import manage from './compoents/teacher/manage.vue'
+import manage from './compoents/teacher/manage.vue';
+import login from './compoents/login.vue';
+import addcategory from './compoents/category/addcategory.vue';
 //路由
 import router from 'vue-router';
 Vue.use(router);
@@ -43,21 +45,47 @@ import '../statics/css/site.css';
 
 //实例化路由对象
 var routers = new router({
-    routes:[
-        {path:'/',redirect:'/home'},
-        {path:'/home',component:home},
-        {path:'/teacher/teacherlist',component:teacherlist},
-        {path:'/category/categorylist',component:categorylist},
-        {path:'/course/coursecreate',component:coursecreate},
-        {path:'/course/courselist',component:courselist},
-        {path:'/teacher/manage',component:manage}
+    routes: [
+        // {
+        //     path: '/',
+        //     redirect: '/home'
+        // },
+        {
+            path: '/home',
+            component: home
+        },
+        {
+            path: '/teacher/teacherlist',
+            component: teacherlist
+        },
+        {
+            path: '/category/categorylist',
+            component: categorylist
+        },
+        {
+            path: '/course/coursecreate',
+            component: coursecreate
+        },
+        {
+            path: '/course/courselist',
+            component: courselist
+        },
+        {
+            path: '/teacher/manage',
+            component: manage
+        },
+        {
+            path:'/category/addcategory',
+            component:addcategory
+        }
     ]
 })
 
 
 //实例化vue对象
 new Vue({
-    el:'#app',
-    router:routers,
-    render:c=>c(App)
+    el: '#app',
+    router: routers,
+    // render: c => c(login)
+    render:c=>c(App),
 })

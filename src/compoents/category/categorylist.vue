@@ -5,7 +5,9 @@
             <a>课程管理&nbsp;</a>/&nbsp;课程分类
         </div>
         <div class="teacher">
-            <button type="button" class="btn btn-success btn-sm f_right">添加分类</button>
+            <router-link to='/category/addcategory'>
+                <button type="button" class="btn btn-success btn-sm f_right">添加分类</button>
+            </router-link>
         </div>
         <div class="panel">
             <!--表格-->
@@ -44,8 +46,7 @@
     </div>
 </template>
 <script>
-    export default {
-    }
+    export default {}
 </script>
 <style scoped>
     /*讲师列表*/
@@ -83,6 +84,7 @@
         font-weight: 400;
         padding: 5px;
     }
+
     #tbody td {
         text-align: center;
         padding: 5px;
